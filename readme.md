@@ -1,49 +1,55 @@
-# NodeJSCloudantCRUDApp
+# Cloud Application Lab - Creating CRUD Application with Cloudant, IBM Bluemix and Node JS
 
-This application uses to demonstrate the operations of Create, Retrieve, Update and Delete into Cloudant database using NodeJS runtime. 
+This repository contains the lab for demonstrating Cloudant CRUD operations using NodeJS as back-end. It is one of the labs brought to you by the AP Cloud Initiative.
 
-## Technologies Involved
+## Technologies Overview
 
-* Server Side - NodeJS 
-* Client Side Technologies (HTML,CSS, Bootstrap)
-* Database - IBM Cloudant
+* NodeJS 
+* HTML, CSS, Bootstrap
+* IBM Cloudant
+* IBM Bluemix
 
-## Prerequisties 
+## Important Links
 
-* If you have not already, download node.js and install it on your local machine. 
-	- NodeJS Installation - https://nodejs.org/en/
-* Create an IBM Bluemix account - https://console.bluemix.net/
-* Create an IBM Cloudant account - https://cloudant.com/sign-up/
+* Download Node JS - https://nodejs.org/en/
+* Access IBM Bluemix  - https://console.bluemix.net/
+* Access IBM Cloudant - https://cloudant.com/sign-up/
+
 
 ## Running the app locally
 
 * Clone the application from the repository 
 * cd into the project folder and if required by any modules, run
+
 ```
-		npm install
+	npm install
 ```		
 * Start the application by typing
 ```
-		node app.js
+	node app.js
 ```		
 * When the application executes, the first line will say:
 ```
-		http://localhost:<port_number>
+	http://localhost:<port_number>
 ```		
 Paste this URL in the browser to open the application.
 
 ## Running the app on Bluemix
-* Download and install Cloud Foundry CLI to be used on the terminal.
+
+* Download and install Cloud Foundry CLI to be used on the terminal
 * Open the command prompt where the application exists
 * On the Terminal, Connect to Bluemix using the CF CLI and follow the prompts to log in. 
 * Once you're in the same space as the app,
+
 ```
-    cf api https://api.ng.bluemix.net
-    cf login
+  cf api https://api.ng.bluemix.net
+  cf login
 ```
-* Create the manifest.yml file and change the <Unique_Name> parameter to something unique.
+
+* Create the manifest.yml file and change the <unique_Name> parameter to something unique.
+
 ```
-    applications:
+  applications:
     - path: .
     name: <Unique_Name>
     host: <Unique_Name>
@@ -61,9 +67,13 @@ To troubleshoot your Bluemix app the main useful source of information are the l
   ```
   $ cf logs <application-name> --recent
   ```
+
 ## Repository Contents
 
-This repository contains the completed application files for the tutorial and are intended to assist with the training videos prepared for MEANHack '16.
+This repository contains the following elements,
+
+* Lab Documentation
+* Demo Application
 
 ## Lab Contributors
 
@@ -71,5 +81,3 @@ The following people have contributed to the development and delivery of this la
 
 * Manasa Sutapalli - Lead Researcher IoT/Cloud Apps
 * Venkatesh Voona  - Lead Researcher NextGen
-* Chanakya Lokam   - Director Innovation
-* Aditya Chinni    - Lead Innovation
