@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="crudCSS.css" rel="stylesheet" />
+  <link href="footer.css" rel="stylesheet" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <!-- <script src="MainJS.js"></script> -->
+</head>
+<style>
+  @media only screen and (max-width: 500px) {
+    .apcloud {
+      margin-left: 35px !important;
+    }
+
+    #submit {
+      width: 100%;
+    }
+    #reset {
+      width: 100%;
+      margin-left: 2px;
+      margin-top: 10px;
+    }
+    .navbar-header {
+      padding-bottom: 10px;
+    }
+
+    #footer1 {
+      padding: 20px 20px 15px !important;
+    }
+
+  }
+
+  @media only screen and (min-width: 768px) {
+    #footer2 {
+      text-align: right !important;
+    }
+  }
+
+  @media only screen and (min-width: 768px) and (max-width:1280px) {
+    #apcloudimg {
+      margin-left: -100px;
+    }
+    #submit {
+      width: 100%;
+    }
+    #reset {
+      width: 100%;
+      margin-left: 2px;
+      margin-top: 10px;
+    }
+  }
+
+  @media only screen and (min-width:990px) {
+    #footer1 {
+      position: absolute !important;
+      bottom: 0;
+    }
+
+  }
+</style>
+
+<body onload="inf()">
+  <script>
+    function inf() {
+      //document.getElementById("one").style.visibility="hidden";
+    }
+  </script>
+  <div class="container-fluid" style="margin-top:15px;">
+    <div class="col-sm-3 col-xs-12 pull-left">
+      <img src="img/miracle-logo-dark.png" style="margin-left:35px;height:50px !important">
+    </div>
+    <div class="col-sm-offset-7 col-sm-2 col-xs-12 apcloud">
+      <img id="apcloudimg" src="img/apcloud_Internal.png" style="height:50px !important">
+    </div>
+  </div><br>
+  <div class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#headbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+        <a style="margin-left: 34px;" class="navbar-brand whiteText" href="#"><strong>MEAN CRUD Application Demo</strong></a>
+      </div>
+      <div class="collapse navbar-collapse" id="headbar">
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 14px;">
+          <li><a href="Create.html">Create</a></li>
+          <li><a href="Retrieve.html">Retrieve</a></li>
+          <li><a href="Delete.html">Delete</a></li>
+          <li><a href="Update.html">Update</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div id="submitDiv1" class="container" style="padding: 15px; padding-top: 2px;min-height:250px;">
+      <div class="row" id="top">
+        <div class="col-md-offset-4 col-md-6 ">
+          <!-- 	<form action="/delete" method="get"> -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-8">
+                <div class="form-group has-feedback">
+                  <input type="search" placeholder="Enter Book Id" class="form-control" id="Email" name="Emaill" onblur="nm6()">
+
+                  <script>
+                    function nm6() {
+
+                      var g = document.getElementById("Email").value;
+
+                      if (g == "") {
+
+                        document.getElementById("h7").innerHTML = "Please fill this field"
+
+                      }
+                    }
+                  </script>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <span style="color:red" id="h7"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-12">
+                <div class="form-group has-feedback">
+                  <button type="submit" class="btn btn-primary" id="delete" name="delete" onclick="fu()">Delete Data</button>
+                  <br>
+                  <script>
+                    function fu() {
+                      var g = document.getElementById("Email").value;
+
+
+                      if (g == "") {
+
+                        document.getElementById("h7").innerHTML = "Please fill this field"
+
+                      } else {
+
+                        var va = document.getElementById("Email").value;
+
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function() {
+
+                          if (xhttp.readyState == 4) {
+                            var res = xhttp.responseText;
+                            if (xhttp.responseText == "no data found") {
+                              document.getElementById("one").style.display = 'none';
+                              document.getElementById("one1").style.display = 'block';
+                            } else {
+                              document.getElementById("one").style.display = 'block';
+                              document.getElementById("one1").style.display = 'none';
+                            }
+
+                          }
+                        };
+                        try {
+                          xhttp.open("GET", "delete?ss=" + va, true);
+                          xhttp.send();
+                        } catch (e) {
+                          document.getElementById("one").style.display = 'none';
+                          document.getElementById("one1").style.display = 'block';
+                          alert("unable");
+                        }
+                      }
+                    }
+                  </script>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" id="alert">
+            <div class="col-md-8">
+              <div class="alert alert-success" id="one" style="display: none;">
+                <center>Data deleted successfully</center>
+              </div>
+              <div class="alert alert-success" id="one1" style="display:none;">
+                <center><strong>Sorry!</strong> Check the ID</center>
+              </div>
+
+            </div>
+          </div>
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+  <footer class="container-fluid col-md-12 col-sm-12 col-xs-12" id="footer1" style="padding:15px 55px !important;padding-top:20px !important;background-color:#232728;">
+
+    <div class="col-sm-6 col-xs-12" style="color:#8c8c8c"> © 2017 Miracle Software Systems, Inc.
+    </div>
+    <div class="col-sm-6 col-xs-12" id="footer2" style="color:#8c8c8c">
+      <p>Built by <b style="color:#00aae7"> Miracle’s Innovation Labs
+						</div>
+
+          <!-- /row of widgets -->
+    </footer>
+
+</body>
+</html>

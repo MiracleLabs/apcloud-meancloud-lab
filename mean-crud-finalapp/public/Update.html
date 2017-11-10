@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="crudCSS.css" rel="stylesheet" />
+  <link href="footer.css" rel="stylesheet" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <!-- <script src="MainJS.js"></script> -->
+</head>
+<style>
+  @media only screen and (max-width: 500px) {
+    .apcloud {
+      margin-left: 35px !important;
+    }
+
+    #submit {
+      width: 100%;
+    }
+    #reset {
+      width: 100%;
+      margin-left: 2px;
+      margin-top: 10px;
+    }
+    .navbar-header {
+      padding-bottom: 10px;
+    }
+
+    #footer1 {
+      padding: 20px 20px 15px !important;
+    }
+
+  }
+
+  @media only screen and (min-width: 768px) {
+    #footer2 {
+      text-align: right !important;
+    }
+  }
+
+  @media only screen and (min-width: 768px) and (max-width:992px) {
+    #apcloudimg {
+      margin-left: -100px;
+    }
+    #submit {
+      width: 100%;
+    }
+    #reset {
+      width: 100%;
+      margin-left: 2px;
+      margin-top: 10px;
+    }
+  }
+
+  @media only screen and (min-width:1268px) {
+    #apcloudimg {
+      margin-left: -100px;
+    }
+    #submit {
+      width: 100%;
+    }
+    #reset {
+      width: 100%;
+      margin-left: 2px;
+      margin-top: 10px;
+    }
+  }
+
+
+  }
+</style>
+
+<body onload="hi()">
+  <script>
+    function hi() {
+      document.getElementById("fm").style.visibility = "hidden";
+    }
+  </script>
+  <div class="container-fluid" style="margin-top:15px;">
+    <div class="col-sm-3 col-xs-12 pull-left">
+      <img src="img/miracle-logo-dark.png" style="margin-left:35px;height:50px !important">
+    </div>
+    <div class="col-sm-offset-7 col-sm-2 col-xs-12 apcloud">
+      <img id="apcloudimg" src="img/apcloud_Internal.png" style="height:50px !important">
+    </div>
+  </div><br>
+  <div class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#headbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+        <a style="margin-left: 34px;" class="navbar-brand whiteText" href="#"><strong>MEAN CRUD Application Demo</strong></a>
+      </div>
+      <div class="collapse navbar-collapse" id="headbar">
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 14px;">
+          <li><a href="Create.html">Create</a></li>
+          <li><a href="Retrieve.html">Retrieve</a></li>
+          <li><a href="Delete.html">Delete</a></li>
+          <li><a href="Update.html">Update</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div id="submitDiv1" class="container" style="padding: 15px; padding-top: 2px;min-height:250px;">
+      <div class="row" id="top">
+        <div class="col-md-offset-4 col-md-6">
+          <!-- 	<form action="/delete" method="get"> -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-8">
+                <div class="form-group has-feedback">
+                  <input type="search" placeholder="Enter Book Id" class="form-control" id="Email" name="Emaill" onblur="nm6()">
+                </div>
+              </div>
+              <script>
+                function nm6() {
+
+                  var g = document.getElementById("Email").value;
+
+                  if (g == "") {
+
+                    document.getElementById("h7").innerHTML = "Please fill this field"
+
+                  }
+                }
+              </script>
+
+
+              <div class="col-md-4">
+                <span style="color:red" id="h7"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-12">
+                <div class="form-group has-feedback">
+                  <button type="submit" class="btn btn-primary" id="delete" name="delete" onclick="fu()">Get Data</button>
+                  <br>
+                  <!-- <div class="col-sm-offset-1 col-sm-11">
+                                             <span style="color:green;font-size:16px;" class="alert alert-info" id="one">Data successfully updated</span>
+						                  </div>  -->
+                  <script>
+                    //document.getElementById("one").style.visibility="hidden";
+
+                    function fu() {
+                      var g = document.getElementById("Email").value;
+
+                      if (g == "") {
+
+                        document.getElementById("h7").innerHTML = "Please fill this field"
+                      } else {
+                        var va = document.getElementById("Email").value;
+                        var xhttp = new XMLHttpRequest();
+
+                        xhttp.onreadystatechange = function() {
+
+                          /* if(xhttp.responseText.length == 0){
+                          document.getElementById("one").style.display='none';
+                          document.getElementById("one1").style.display='none';
+                          document.getElementById("one2").style.display='block';
+                          } */
+                          if (xhttp.readyState == 4) {
+                            //alert(xhttp.responseText);
+                            var res = xhttp.responseText;
+                            if (res == "no data found" || xhttp.responseText.length == 0) {
+                              document.getElementById("one").style.display = 'none';
+                              document.getElementById("one1").style.display = 'none';
+                              document.getElementById("one2").style.display = 'block';
+                              document.getElementById("fm").style.visibility = "hidden";
+                            }
+                            <!-- document.getElementById("one").innerHTML=res; -->
+                            <!-- var json=JSON.stringify(res); -->
+                            else {
+                              console.log(JSON.parse(res).docs[0].dname);
+                              var gg1 = JSON.parse(res).docs[0].dname;
+                              var gg2 = JSON.parse(res).docs[0]._id;
+                              var gg3 = JSON.parse(res).docs[0]._rev;
+                              var gg4 = JSON.parse(res).docs[0].dtitle;
+                              var gg5 = JSON.parse(res).docs[0].dauthor;
+                              var gg6 = JSON.parse(res).docs[0].dkeywords;
+                              var gg7 = JSON.parse(res).docs[0].dpages;
+                              var gg8 = JSON.parse(res).docs[0].dvolume;
+                              document.getElementById("one").style.display = 'none';
+                              document.getElementById("one1").style.display = 'none';
+                              document.getElementById("one2").style.display = 'none';
+                              document.getElementById("fm").style.visibility = "visible";
+
+
+                              $("#BName").val(gg1);
+                              $("#BId").val(gg2);
+                              $("#Brev").val(gg3);
+                              $("#BTitle").val(gg4);
+                              $("#BAuthor").val(gg5);
+                              $("#BKeywords").val(gg6);
+                              $("#BPages").val(gg7);
+                              $("#BVolume").val(gg8);
+
+                            }
+
+                          }
+                        };
+                        try {
+                          xhttp.open("GET", "update?ss=" + va, true);
+                          xhttp.send();
+                        } catch (e) {
+                          document.getElementById("one").style.display = 'none';
+                          document.getElementById("one1").style.display = 'none';
+                          document.getElementById("one2").style.display = 'block';
+                          alert("unable");
+                        }
+                      }
+                    }
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+
+              <div class="alert alert-success" id="one2" style="display: none;">
+                <center><strong>Sorry!</strong> Check the ID</center>
+              </div>
+
+            </div>
+          </div>
+          <!-- </form> -->
+
+
+
+
+
+        </div>
+        <center>
+          <form name="myTest" id="fm">
+            <div class="col-md-offset-4 col-md-5">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-9">
+                    <br><br>
+                    <div class="form-group has-feedback">
+                      <input type="text" name="BName" class="form-control" id="BName" onblur="nm()" placeholder="Name" required />
+                      <p id="pBName"></p>
+                      <div><span style="color:red" id="hh"></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script>
+                function nm() {
+
+                  var g = document.getElementById("BName").value;
+
+                  if (g == "") {
+
+                    document.getElementById("hh").innerHTML = "Please fill this field"
+
+                  }
+                }
+              </script>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-9">
+                    <div class="form-group has-feedback">
+                      <input type="text" name="BAuthor" class="form-control" id="BAuthor" onblur="nm1()" placeholder="Author" required />
+                      <input type="hidden" name="Brev" id="Brev" />
+                      <p id="pBAuthor"></p>
+                      </p>
+                      <div><span style="color:red" id="h1"></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <script>
+                function nm1() {
+
+                  var g = document.getElementById("BAuthor").value;
+                  if (g == "") {
+
+                    document.getElementById("h1").innerHTML = "Please fill this field"
+
+                  }
+                }
+              </script>
+
+
+              <input type="hidden" name="BId" class="form-control" id="BId" onblur="nm2()" placeholder="ID" required />
+
+
+              <script>
+                function nm2() {
+
+                  var g = document.getElementById("BId").value;
+
+                  if (g == "") {
+
+                    document.getElementById("h2").innerHTML = "Please fill this field"
+
+                  }
+                }
+              </script>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-9">
+                    <div class="form-group has-feedback">
+                      <input type="text" name="BTitle" class="form-control" id="BTitle" onblur="nm3()" placeholder="Title" required />
+                      <p id="pBTitle"></p>
+                      </p>
+                      <div><span style="color:red" id="h3"></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <script>
+                function nm3() {
+
+                  var g = document.getElementById("BTitle").value;
+
+                  if (g == "") {
+
+                    document.getElementById("h3").innerHTML = "Please fill this field"
+
+                  }
+                }
+              </script>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-9">
+                    <div class="form-group has-feedback">
+                      <input type="text" name="BVolume" class="form-control" id="BVolume" onblur="nm4()" placeholder="Volume" required />
+                      <p id="pBVolume"></p>
+                      </p>
+                      <div><span style="color:red" id="h4"></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <script>
+                function nm4() {
+
+                  var g = document.getElementById("BVolume").value;
+
+                  if (g == "") {
+
+                    document.getElementById("h4").innerHTML = "Please fill this field"
+
+                  }
+                }
+              </script>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-9">
+                    <div class="form-group has-feedback">
+                      <input type="text" name="BKeywords" class="form-control" id="BKeywords" onblur="nm5()" placeholder="Keywords" required />
+                      <p id="pBKeywords"></p>
+                      </p>
+                      <div><span style="color:red" id="h5"></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <script>
+                function nm5() {
+
+                  var g = document.getElementById("BKeywords").value;
+
+                  if (g == "") {
+
+                    document.getElementById("h5").innerHTML = "Please fill this field"
+
+                  }
+                }
+              </script>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-9">
+                    <div class="form-group has-feedback">
+                      <input type="text" name="BPages" id="BPages" class="form-control" onblur="nm6()" placeholder="Pages" required="required" />
+                      <p id="pBPages"></p>
+                      </p>
+                      <div><span style="color:red" id="h6"></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 					<script>
+function nm6(){
+
+var g=document.getElementById("BPages").value;
+
+if(g==""){
+
+document.getElementById("h6").innerHTML="please fill this field"
+
+}
+}
+</script> -->
+
+              <br />
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-sm-offset-2 col-md-5">
+                    <div class="form-group has-feedback" id="createbtns">
+                      <div> <button type="button" class="btn btn-primary" id="submit" name="submit" onclick="nm7()">Update</button> <button type="reset" class="btn btn-primary" id="reset" name="reset" onclick="nm10()">Reset</button>
+                      </div>
+
+
+                      <div><span style="color:red" id="h7"></span></div>
+                      <script>
+                        function nm10() {
+
+                          document.getElementById("one").style.display = 'none';
+                          document.getElementById("one1").style.display = 'none';
+                          document.getElementById("one2").style.display = 'none';
+
+                        }
+
+                        function nm7() {
+
+                          var g = document.getElementById("BName").value;
+                          var g1 = document.getElementById("BAuthor").value;
+                          var g2 = document.getElementById("BId").value;
+                          var g3 = document.getElementById("BTitle").value;
+                          var g4 = document.getElementById("BVolume").value;
+                          var g5 = document.getElementById("BKeywords").value;
+                          var g6 = document.getElementById("BPages").value;
+                          var g7 = document.getElementById("Brev").value;
+                          if (g == "")
+                            document.getElementById("h7").innerHTML = "Please fill all fields"
+                          else if (g1 == "")
+                            document.getElementById("h7").innerHTML = "Please lease fill all fields"
+                          else if (g2 == "")
+                            document.getElementById("h7").innerHTML = "Please fill all fields"
+                          else if (g3 == "")
+                            document.getElementById("h7").innerHTML = "Please fill all fields"
+                          else if (g4 == "")
+                            document.getElementById("h7").innerHTML = "Please fill all fields"
+                          else if (g5 == "")
+                            document.getElementById("h7").innerHTML = "Please fill all fields"
+                          else if (g6 == "")
+                            document.getElementById("h7").innerHTML = "Please fill all fields"
+                          else {
+
+                            var xhttp = new XMLHttpRequest();
+                            xhttp.onreadystatechange = function() {
+
+                              if (xhttp.readyState == 4) {
+
+                                var res = xhttp.responseText;
+                                document.getElementById("one").style.display = 'block';
+                                document.getElementById("one1").style.display = 'none';
+                                document.getElementById("one2").style.display = 'none';
+
+                              }
+                            };
+                            try {
+                              xhttp.open("GET", "updatebook?b=" + g + "&b1=" + g1 + "&b2=" + g2 + "&b3=" + g3 + "&b4=" + g4 + "&b5=" + g5 + "&b6=" + g6 + "&b7=" + g7, true);
+                              xhttp.send();
+                            } catch (e) {
+                              document.getElementById("one").style.display = 'none';
+                              document.getElementById("one1").style.display = 'block';
+                              document.getElementById("one2").style.display = 'none';
+                              alert("unable");
+                            }
+                          }
+                        }
+                      </script>
+                      <div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row" id="alert">
+                <div class="col-md-8">
+                  <div class="alert alert-success" id="one" style="display: none;">
+                    <center> Data updated successfully! </center>
+                  </div>
+                  <div class="alert alert-success" id="one1" style="display: none;">
+                    <center><strong>Sorry!</strong> Error in updating the data</center>
+                  </div>
+                  <div class="alert alert-success" id="one2" style="display: none;">
+                    <center><strong>Sorry!</strong> Check the ID</center>
+                  </div>
+                </div>
+              </div>
+          </form>
+
+        </center>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+  <footer class="container-fluid col-md-12 col-sm-12 col-xs-12" id="footer1" style="padding:18px 55px !important;padding-top:20px !important;background-color:#232728;position:relative;bottom:0;">
+
+    <div class="col-sm-6 col-xs-12" style="color:#8c8c8c"> © 2017 Miracle Software Systems, Inc.
+    </div>
+    <div class="col-sm-6 col-xs-12" id="footer2" style="color:#8c8c8c">
+      <p>Built by <b style="color:#00aae7"> Miracle’s Innovation Labs
+						</div>
+
+          <!-- /row of widgets -->
+    </footer>
+
+</body>
+</html>

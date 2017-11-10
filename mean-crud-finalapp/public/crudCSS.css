@@ -1,0 +1,70 @@
+﻿html {
+   
+}
+body{ 
+      font-family: 'Lato', sans-serif !important;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+ .navbar {
+    border-radius: 0px;
+}
+#whiteborder {
+    margin-top: 15px;
+}
+
+#mss {
+    width: 150px;
+    height: 54px;
+    margin-left: 66px;
+	padding:5px;
+	
+}
+#mss1 {
+    width: 150px;
+    height: 50px;
+    margin-left: 995px;
+	padding:1px;
+	margin-top: -75px;
+}
+
+#righttext {
+    float: right;
+    font-size: 25px;
+    padding-top: 5px;
+	color: #0d416b
+}
+
+#middletext {
+    font-size: 25px;
+    margin-left: 344px;
+}
+
+#ourservice {
+    margin-left: 38px;
+}
+/*=======================================================Create html CSS=========================================================================*/
+#submit {
+    margin-left: 2px;
+    width: 145px;
+}
+#reset {
+    margin-left: 9px;
+    width: 145px;
+
+}
+#createbtns{
+    
+}
+/*=======================================================Delete HTML CSS=========================================================================*/
+#delete {
+    margin-left: 118px;
+}
+/*=======================================================Retrieve HTML CSS========================================================================*/
+#retrieve {
+    margin-left: 101px;
+}
+/*=======================================================Update HTML CSS==========================================================================*/
+#update {
+    margin-left: 89px;
+}

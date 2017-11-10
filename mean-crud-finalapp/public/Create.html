@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="crudCSS.css" rel="stylesheet" />
+  <link href="footer.css" rel="stylesheet" />
+
+  <!-- <script src="MainJS.js"></script> -->
+  <style>
+    @media only screen and (max-width: 500px) {
+      .apcloud {
+        margin-left: 35px !important;
+      }
+
+      #submit {
+        width: 100%;
+      }
+      #reset {
+        width: 100%;
+        margin-left: 2px;
+        margin-top: 10px;
+      }
+      .navbar-header {
+        padding-bottom: 10px;
+      }
+
+      #footer1 {
+        padding: 20px 20px 15px !important;
+      }
+
+    }
+
+    @media only screen and (min-width: 768px) {
+      #footer2 {
+        text-align: right !important;
+      }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width:990px) {
+      #apcloudimg {
+        margin-left: -100px;
+      }
+      #submit {
+        width: 100%;
+      }
+      #reset {
+        width: 100%;
+        margin-left: 2px;
+        margin-top: 10px;
+      }
+    }
+
+    @media only screen and (min-width:1281px) and (max-width:1285px) {
+      #apcloudimg {
+        margin-left: -100px;
+      }
+      #submit {
+        width: 100%;
+      }
+      #reset {
+        width: 100%;
+        margin-left: 2px;
+        margin-top: 10px;
+      }
+    }
+
+    @media only screen and (min-width:990px) {
+      #footer1 {
+        position: absolute !important;
+        bottom: 0;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid" style="margin-top:15px;">
+    <div class="col-sm-3 col-xs-12 pull-left">
+      <img src="img/miracle-logo-dark.png" style="margin-left:35px;height:50px !important">
+    </div>
+    <div class="col-sm-offset-7 col-sm-2 col-xs-12 apcloud">
+      <img id="apcloudimg" src="img/apcloud_Internal.png" style="height:50px !important">
+    </div>
+  </div><br>
+  <div class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#headbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+        <a style="margin-left: 34px;" class="navbar-brand whiteText" href="#"><strong>MEAN CRUD Application Demo</strong></a>
+      </div>
+      <div class="collapse navbar-collapse" id="headbar">
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 14px;">
+          <li><a href="Create.html">Create</a></li>
+          <li><a href="Retrieve.html">Retrieve</a></li>
+          <li><a href="Delete.html">Delete</a></li>
+          <li><a href="Update.html">Update</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div id="submitDiv1" class="container" style="padding: 15px; padding-top: 10px">
+      <!--$valid The field content is valid-->
+      <form name="myTestForm" action="/create" method="get" novalidate>
+        <div class="col-md-offset-3 col-md-7">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-8">
+                <div class="form-group has-feedback">
+                  <input type="text" name="BName" id="BName" onblur="nm()" class="form-control" placeholder="Name">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <span style="color:red" id="hh"></span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-8">
+                <div class="form-group has-feedback">
+                  <input type="text" name="BAuthor" id="BAuthor" onblur="nm1()" class="form-control" placeholder="Author">
+
+                </div>
+              </div>
+              <div class="col-md-3">
+                <span style="color:red" id="h1"></span>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-8">
+                <div class="form-group has-feedback">
+                  <input type="text" name="BId" id="BId" onblur="nm2()" class="form-control" placeholder="ID">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <span style="color:red" id="h2"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-8">
+                <div class="form-group has-feedback">
+                  <input type="text" name="BTitle" id="BTitle" onblur="nm3()" class="form-control" placeholder="Title">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <span style="color:red" id="h3"></span>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-8">
+                <div class="form-group has-feedback">
+                  <input type="text" name="BVolume" id="BVolume" onblur="nm4()" class="form-control" placeholder="Volume">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <span style="color:red" id="h4"></span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-8">
+                <div class="form-group has-feedback">
+                  <input type="text" name="BKeywords" id="BKeywords" onblur="nm5()" class="form-control" placeholder="Keywords">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <span style="color:red" id="h5"></span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-8">
+                <div class="form-group has-feedback">
+                  <input type="text" name="BPages" id="BPages" onblur="nm6()" class="form-control" placeholder="Pages">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <span style="color:red" id="h6"></span>
+              </div>
+            </div>
+          </div>
+
+
+          <br />
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-offset-1 col-md-9">
+                <div class="form-group has-feedback" id="createbtns">
+                  <button type="button" class="btn btn-primary" id="submit" name="submit" onclick="nm7()">Submit</button>
+
+                  <!-- <input type="submit" class="btn btn-primary" id="submit" name="submit" value="submit" />  -->
+
+                  <button type="reset" class="btn btn-primary" id="reset" name="reset" onclick="nm10()">Reset</button>
+
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+    </div>
+    <div class="row" id="alert">
+      <div class="col-md-8">
+        <div class="alert alert-success" id="one" style="display: none;">
+          <center>Data inserted successfully!</center>
+        </div>
+        <div class="alert alert-success" id="one1" style="display: none;">
+          <center><strong>Sorry!</strong>Error in inserting data</center>
+        </div>
+        <div class="alert alert-success" id="one2" style="display: none;">
+          <center><strong>Sorry!</strong>Record already exists</center>
+        </div>
+
+      </div>
+    </div>
+
+    <!--  <div class="col-md-8">
+                          <div class="alert alert-success" id="one">
+                             <center><strong>Success!</strong> Data successfully retrieved</center>
+                              </div>
+
+                        </div> -->
+    </form>
+  </div>
+  </div>
+  <footer class="container-fluid col-md-12 col-sm-12 col-xs-12" id="footer1" style="padding:18px 55px !important;padding-top:20px !important;background-color:#232728;position:relative;bottom:-46px;">
+
+    <div class="col-sm-6 col-xs-12" style="color:#8c8c8c"> © 2017 Miracle Software Systems, Inc.
+    </div>
+    <div class="col-sm-6 col-xs-12" id="footer2" style="color:#8c8c8c ">
+      <p>Built by <b style="color:#00aae7"> Miracle’s Innovation Labs
+						</div>
+
+          <!-- /row of widgets -->
+    </footer>
+
+	<script>
+
+function nm(){
+	var g=document.getElementById("BName").value;
+	if(g==""){
+		document.getElementById("hh").innerHTML="This field is required"
+	}else{
+		document.getElementById("hh").innerHTML=""
+	}
+}
+
+function nm1(){
+	var g=document.getElementById("BAuthor").value;
+	if(g==""){
+		document.getElementById("h1").innerHTML="This field is required"
+	}else{
+		document.getElementById("h1").innerHTML=""
+	}
+}
+
+function nm2(){
+	var g=document.getElementById("BId").value;
+	if(g==""){
+		document.getElementById("h2").innerHTML="This field is required"
+	}else{
+		document.getElementById("h2").innerHTML=""
+	}
+}
+
+function nm3(){
+	var g=document.getElementById("BTitle").value;
+	if(g==""){
+		document.getElementById("h3").innerHTML="This field is required"
+	}else{
+		document.getElementById("h3").innerHTML=""
+	}
+}
+
+function nm4(){
+	var g=document.getElementById("BVolume").value;
+	if(g==""){
+		document.getElementById("h4").innerHTML="This field is required"
+	}else{
+		document.getElementById("h4").innerHTML=""
+	}
+}
+
+function nm5(){
+	var g=document.getElementById("BKeywords").value;
+	if(g==""){
+		document.getElementById("h5").innerHTML="This field is required"
+	}else{
+		document.getElementById("h5").innerHTML=""
+	}
+}
+
+function nm6(){
+	var g=document.getElementById("BPages").value;
+	if(g==""){
+		document.getElementById("h6").innerHTML="This field is required"
+	}else{
+		document.getElementById("h6").innerHTML=""
+	}
+}
+
+function resetFields(){
+
+	document.getElementById("one").style.display='none';
+	document.getElementById("one1").style.display='none';
+	document.getElementById("hh").innerHTML=""
+	document.getElementById("h1").innerHTML=""
+	document.getElementById("h2").innerHTML=""
+	document.getElementById("h3").innerHTML=""
+	document.getElementById("h4").innerHTML=""
+	document.getElementById("h5").innerHTML=""
+	document.getElementById("h6").innerHTML=""
+}
+
+function nm7(){
+
+	var g=document.getElementById("BName").value;
+	var g1=document.getElementById("BAuthor").value;
+	var g2=document.getElementById("BId").value;
+	var g3=document.getElementById("BTitle").value;
+	var g4=document.getElementById("BVolume").value;
+	var g5=document.getElementById("BKeywords").value;
+	var g6=document.getElementById("BPages").value;
+
+	if(g=="")
+		document.getElementById("h7").innerHTML="This field is required"
+	else if(g1=="")
+		document.getElementById("h7").innerHTML="This field is required"
+	else if(g2=="")
+		document.getElementById("h7").innerHTML="This field is required"
+	else if(g3=="")
+		document.getElementById("h7").innerHTML="This field is required"
+	else if(g4=="")
+		document.getElementById("h7").innerHTML="This field is required"
+	else if(g5=="")
+		document.getElementById("h7").innerHTML="This field is required"
+	else if(g6=="")
+		document.getElementById("h7").innerHTML="This field is required"
+	else{
+
+	var xhttp=new XMLHttpRequest();
+	xhttp.onreadystatechange=function(){
+
+		if(xhttp.responseText.length == 0){
+			document.getElementById("one").style.display='none';
+			document.getElementById("one1").style.display='none';
+			document.getElementById("one2").style.display='block';
+		}
+
+		if(xhttp.readyState==4){
+
+			var res=xhttp.responseText;
+			//document.getElementById("one").innerHTML=res;
+			document.getElementById("one").style.display='block';
+			document.getElementById("one1").style.display='none';
+			document.getElementById("one2").style.display='none';
+
+		}
+	};
+
+	try{
+		xhttp.open("GET","create?b="+g+"&b1="+g1+"&b2="+g2+"&b3="+g3+"&b4="+g4+"&b5="+g5+"&b6="+g6,true);
+		xhttp.send();
+	}catch(e){
+		document.getElementById("one1").style.display='block';
+		document.getElementById("one").style.display='none';
+		document.getElementById("one2").style.display='none';
+		alert("unable");
+		}
+	}
+}
+
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "Your Rest URL Here", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+    var response = JSON.parse(xhttp.responseText);
+
+</script>
+
+
+</body>
+</html>
